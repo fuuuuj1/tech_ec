@@ -1,0 +1,42 @@
+version: "3.8"
+services:
+  # webコンテナはnginxで構成
+  web:
+    image: nginx:latest
+    ports:
+      - "8000:80"
+      - "8900:443"
+    tty: true
+    stdin_open: true
+    depends_on:
+      - app
+    volumes:
+      - ./Docker/web/default.conf:/etc/nginx/conf.d/default.conf
+      - .:/work/tech_ec
+
+  # appコンテナはPHP 個別でDockerfile作成
+  app:
+    build: ./Docker/php
+    volumes:
+      - .:/work/tech_ec
+    depends_on:
+      - db
+
+  # dbコンテナはMySQLで構成する
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: tech_ec_data
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: root
+      TZ: "Asia/Tokyo"
+    ports:
+      - 3306:3306
+    volumes:
+      - ./Docker/db/my.conf:/etc/db/conf.d:rw
+      - mysql-data:/var/lib/mysql
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+
+volumes:
+  mysql-data:
