@@ -7,7 +7,7 @@ ENV COMPOSER_ALLOW_SUPERUSER=1 \
   DB_CONNECTION=mysql \
   DB_HOST=db \
   DB_PORT=3306 \
-  DB_DATABASE=tech_ec_data \
+  DB_DATABASE=tech_ec \
   DB_USERNAME=user \
   DB_PASSWORD=password
 
@@ -42,4 +42,4 @@ COPY ./php.ini /usr/local/etc/php/php.ini
 COPY --from=node:10.22 /usr/local/bin /usr/local/bin
 COPY --from=node:10.22 /usr/local/lib /usr/local/lib
 
-WORKDIR /work/tech_ec
+WORKDIR /work/tech_ec/laravel

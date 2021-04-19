@@ -26,7 +26,7 @@ services:
   db:
     image: mysql:5.7
     environment:
-      MYSQL_DATABASE: tech_ec_data
+      MYSQL_DATABASE: tech_ec
       MYSQL_USER: user
       MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: root
