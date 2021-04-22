@@ -24,8 +24,8 @@
       "request": "launch",
       "port": 9001, //php.iniで設定したxdebug用のport番号
       "pathMappings": {
-        // {docker上のdocument root}:{ローカルのdocument root}
-        "/var/www/html": "/work/tech_ec/laravel"
+        // {gestOSで監視したい領域を指定する（コンテナ内の話）}:{ローカルで監視したい領域。プロジェクト（の範囲）を指定}
+        "/work/tech_ec/laravel": "${workspaceFolder}/laravel"
       }
     }
   ]
