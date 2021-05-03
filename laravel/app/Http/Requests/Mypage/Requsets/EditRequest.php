@@ -26,7 +26,9 @@ class EditRequest extends FormRequest
     {
         // ここで任意のバリデーションルールを定義できる プロフィール画面の編集で定義するべきバリデーションは
         // 送信されてきた「名前」情報に対して、入力必須、文字列、255字を超えていないかのバリデーションを定義している
+        // image ファイルが画像（jpeg, png, bmp, gif, svg, webp）であることを検証
         return [
+            'avatar' => ['image', 'file'],
             'name' => ['required', 'string', 'max:255'],
         ];
     }

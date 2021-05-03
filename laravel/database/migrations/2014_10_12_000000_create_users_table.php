@@ -19,6 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            // userテーブルに画像パス名のカラムを追加 初期は画像は設定できないので、最初は空でも問題内容にnullableに設定
+            $table->string('avatar_file_name')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
