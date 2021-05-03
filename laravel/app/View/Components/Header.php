@@ -6,7 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
 
 class Header extends Component
-# --- 省略 ---
+{
+    # --- 省略 ---
     /**
      * Get the view / contents that represent the component.
      *
@@ -19,3 +20,4 @@ class Header extends Component
         return view('components.header')
             ->with('user', $user);
     }
+}

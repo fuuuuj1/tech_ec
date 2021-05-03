@@ -29,3 +29,9 @@ Route::prefix('mypage')
         Route::post('edit-profile', 'ProfileController@editProfile')
         ->name('mypage.edit-profile');
     });
+
+// 商品出品に関するルーティング
+Route::middleware('auth')
+    ->group(function() {
+        Route::get('sell', 'SellController@showSellForm')->name('sell');
+    });
