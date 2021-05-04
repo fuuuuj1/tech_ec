@@ -80,7 +80,16 @@
                         @error('condition')
                         is-invalid
                         @enderror">
-                            {{-- 次のパートで実装します --}}
+                            {{-- 商品状態のセレクトボックスの選択肢 --}}
+                            {{-- bladeの三項演算子を利用してold()に値を渡す --}}
+                            @foreach ($conditions as $condition)
+                                <option value="{{$condition->id}}"
+                                    {{old('condition' == $condition->id ? 'selected':'')}}>
+                                {{$condition->name}}
+                                </option>
+
+                            @endforeach
+
                         </select>
                         @error('condition')
                         <span class="invalid-feedback" role="alert">
